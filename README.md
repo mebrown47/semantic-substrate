@@ -55,7 +55,7 @@ This is synthetic data used to validate the pipeline.
 ---
 
 ## Files
-
+- 'README.md' - this file
 - `sbd_mo_pipeline_v2_with_basestation.py` — main pipeline
 - `synthetic_test_data.ul` — test input dataset
 - 'faa_navaid_database.json' - waypoint/NAVAID database
@@ -67,6 +67,26 @@ This is synthetic data used to validate the pipeline.
 - Python 3.x
 - `nc` (netcat) for streaming (optional)
 - `tar1090` / `readsb` for visualization (optional)
+
+---
+
+## Creating Your Own Input Data
+
+The `.ul` input used by this PoC is derived from Iridium Toolkit parser output.
+
+In practice, this means:
+
+- Capture Iridium traffic with your preferred front-end
+- Run it through the Iridium Toolkit parser
+- Use the resulting `output.parsed` file as the pipeline input
+
+For this proof-of-concept, the `.ul` file is simply the parsed Iridium Toolkit output renamed for convenience.
+
+Example:
+    cp output.parsed my_capture.ul
+    python3 sbd_mo_pipeline_v2_with_basestation.py my_capture.ul --basestation-out
+
+This repository includes synthetic_test_data.ul so you can run the demo immediately without setting up a capture pipeline.
 
 ---
 
